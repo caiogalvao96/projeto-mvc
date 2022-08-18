@@ -3,7 +3,7 @@
 html, body{
    margin: 0;
    padding: 0;
-   font-family: sans-serif;
+   font-family: helvetica;
    background-color: #EFEFEF;
 }
 
@@ -185,12 +185,12 @@ select {
 
 .container{
 	display:flex;
-	padding-left: 45px;
-	padding-right: 45px;
+	padding-left: 200px;
+	padding-right: 200px;
 }
 
 h2 {
-	font-style: bold;
+	
 	color: #205375;
 	margin-bottom: 20px;
 	
@@ -201,31 +201,48 @@ table {
 	width: 100%;
 	font-size: 20px;
 	border-radius: 5px;
-	border:solid 2px;
-	border-bottom-color:white;
-	background-color:  #112B3C;
+	border:none;
+	background-color:  #bab8b8;
+
 }
 
 table th {
 	
-	
+	background-color:#112B3C;
 	color:  #EFEFEF;
-	
+
 	margin: 0px;
 	padding: 0px;
 }
 
 table td {
 	
-	color: #EFEFEF;
+	color: black;
 	text-align: center;
-	border-bottom: solid 1px;
-	border-bottom-color:  #F66B0E;
-	margin-right: none;
+	justify-content: center;
+	align-items: center;
+	
+	
 	
 	
 	
 }
+
+/*
+table, tr, td{
+ border:none ! important;
+}
+*/
+
+tbody > td{
+	margin:0px;
+	color:black;
+}
+
+tbody > tr:nth-child(2n){
+	background-color: #d7d7d7;
+}
+
 
 table tr:hover {
 	border: solid 2px;
@@ -235,5 +252,32 @@ table tr:hover {
 
 table col {
 	
-	border: 0px;
+	border: 0px ! important;
 }
+
+.btn{
+	
+	width: 30px;
+	height: 30px;
+}
+
+.meu-carrousel{
+	margin-top:2vh;
+	width: 100%;
+	height: 70vh;
+	background-color: blue;
+}
+
+.product-item .product-item-content {
+        border: 1px solid var(--surface-d);
+        border-radius: 3px;
+        margin: .3rem;
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    .product-item .product-image {
+        width: 50%;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+    }
+

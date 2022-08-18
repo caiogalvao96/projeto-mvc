@@ -30,41 +30,56 @@
 </h:form>
 
 
-	<h:form class="container">
+	<h:form class="container" id="form1" enctype="multipart/form-data">
 	
 	<div id="div-form">
 	<h2>Cadastro de Veículos</h2>
 		<div class="row">
+			<h:outputLabel value="Foto Veiculo" />
+			<h:inputFile id="foto" value="#{veiculoBean.arquivoFoto}">Escolher Arquivo</h:inputFile>
+		</div>
+		<div class="row">
 			<h:outputLabel>ID</h:outputLabel>
-			<h:inputText id="ipt-id" class="input" readonly="true" value="#{pessoaBean.veiculo.id}"/>
+			<h:inputText id="ipt-id" class="input" readonly="true" value="#{veiculoBean.veiculo.id}"/>
 		</div>
 		<div class="row">
 			<h:outputLabel>Modelo</h:outputLabel>
-			<h:inputText id="ipt-modelo" class="input" value="#{pessoaBean.veiculo.modelo}"/>
+			<h:inputText id="ipt-modelo" class="input" value="#{veiculoBean.veiculo.modelo}"/>
 		</div>
 		<div class="row">
 			<h:outputLabel>Marca</h:outputLabel>
-			<h:inputText id="ipt-marca" class="input" value="#{pessoaBean.veiculo.marca}"/>
+			<h:inputText id="ipt-marca" class="input" value="#{veiculoBean.veiculo.marca}"/>
 		</div>
 		<div class="row">
-			<h:selectOneMenu>
+			<h:selectOneMenu value="#{veiculoBean.veiculo.categoria}" converter="categoriaConverter">
 				<f:selectItem itemDisabled="true" itemLabel="Categoria" />
-				<f:selectItem itemValue="" itemLabel="opção 2" />
-				<f:selectItem itemValue="" itemLabel="opção 3" />
+				<f:selectItems value="#{veiculoBean.listaVeiculos}" 
+				 />
+				
 			</h:selectOneMenu>
 		</div>
 		<div class="botoes">
-			<h:commandButton class="botao botaoh" value="Salvar" action="#{pessoaBean.salvarVeiculo()}"/>
-			<h:commandButton class="botao botaoh" value="Novo" action="#{pessoaBean.novo()}"/>
+			<h:commandButton class="botao botaoh" value="Salvar" action="#{veiculoBean.salvar()}"/>
+			<h:commandButton class="botao botaoh" value="Novo" action="#{veiculoBean.novo()}"/>
 			
 		</div>
 		
 	</div>
+	
+	
+	
+	
+	
 	<div id="outra-div">
-		<h:dataTable value="#{pessoaBean.listaVeiculos}" var="v">
+		<h:dataTable value="#{veiculoBean.veiculos}" var="v" cellspacing="0">
 			<f:facet name="header">
                 Veículos Cadastrados
             </f:facet>
+              <h:column>
+            	 <f:facet name = "header">Foto</f:facet> 
+            	 <h:graphicImage width="60" height="60" style="border-radius:50px;"
+							value="#{v.fotoIconBase64}" />
+            </h:column>
             <h:column>
             	 <f:facet name = "header">ID</f:facet> 
             	<h:outputText value="#{v.id}" />
@@ -79,9 +94,23 @@
             </h:column>
             <h:column>
             	 <f:facet name = "header">Categoria</f:facet> 
+            	   <h:outputText value="#{v.categoria.nomeCategoria}" />
+            </h:column>
+            
+            <h:column>
+            	 <f:facet name = "header">Editar</f:facet> 
+            	  <h:commandButton value="" image="/resources/img/icon-edt.png" class="btn">
+            	  		<f:setPropertyActionListener value="#{v}" target="#{pessoaBean.veiculo}"/>
+            	  </h:commandButton>
             	  
             </h:column>
-           
+            <h:column>
+            	 <f:facet name = "header">Deletar</f:facet> 
+            	   <h:commandButton value="" image="/resources/img/icon-dlt.png"
+            	    class="btn" action="#{pessoaBean.deletar()}" >
+            	    	<f:setPropertyActionListener value="#{v}" target="#{pessoaBean.veiculo}"/>
+            	    </h:commandButton>
+            </h:column>
 		</h:dataTable>
 	</div>
 	</h:form>

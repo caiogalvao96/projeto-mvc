@@ -6,6 +6,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 	<provider>org.hibernate.ejb.HibernatePersistence</provider>
 	<class>br.com.projeto.model.PessoaTeste</class>
 	<class>br.com.projeto.model.Veiculo</class>
+	<class>br.com.projeto.model.Categoria</class>
 	
 	<properties>
 	

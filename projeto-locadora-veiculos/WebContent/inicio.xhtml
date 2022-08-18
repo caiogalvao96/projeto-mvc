@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Projeto Locadora de veiculos</title>
 	<h:outputStylesheet library="css" name="estilo.css" />
@@ -37,6 +38,39 @@
 	</div>
 	
 	
+	
+	</h:form>
+	
+	<h:form styleClass="meu-carrousel">
+	
+		 <div class="card">
+        <p:carousel value="#{pessoaBean.listaVeiculos}" var="v" numVisible="3" numScroll="3"
+                    >
+            <f:facet name="header">
+                <h5>Basic</h5>
+            </f:facet>
+            <div class="product-item">
+                <div class="product-item-content">
+                    <div class="mb-3">
+                        <h:graphicImage width="300" height="150"
+							value="#{v.fotoIconBase64}" />
+                    </div>
+                    <div>
+                        <h4 class="mb-1">#{v.modelo}</h4>
+                        <h6 class="mt-0 mb-3">
+                            <h:outputText value="#{product.price}">
+                                <f:convertNumber type="currency" pattern="¤#0" currencySymbol="$" />
+                            </h:outputText>
+                        </h6>
+                        <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{v.marca}</span>
+                        <div class="mt-5">
+                            <p:commandButton type="button" icon="pi pi-plus" styleClass="rounded-button mr-2" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p:carousel>
+    </div>
 	
 	</h:form>
 

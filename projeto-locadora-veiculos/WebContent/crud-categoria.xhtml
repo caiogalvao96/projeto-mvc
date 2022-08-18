@@ -28,27 +28,23 @@
 		</div>
 	</div>
 </h:form>
+ <h:form class="container">
 	<h2>Cadastrar categorias</h2>
 	<div id="div-form">
 		<div class="row">
 			<h:outputLabel>ID</h:outputLabel>
-			<h:inputText id="ipt-id" class="input"/>
+			<h:inputText id="ipt-id" class="input" value="#{categoriaBean.categoria.id}"/>
 		</div>
 		<div class="row">
-			<h:outputLabel>Modelo</h:outputLabel>
-			<h:inputText id="ipt-modelo" class="input"/>
-		</div>
-		<div class="row">
-			<h:outputLabel>Marca</h:outputLabel>
-			<h:inputText id="ipt-marca" class="input"/>
+			<h:outputLabel>Nome Categoria</h:outputLabel>
+			<h:inputText id="ipt-modelo" class="input" value="#{categoriaBean.categoria.nomeCategoria}"/>
 		</div>
 		<div class="botoes">
-			<h:commandButton class="botao botaoh" value="botao1"/>
-			<h:commandButton class="botao botaoh" value="botao2"/>
-			<h:commandButton class="botao botaoh" value="botao3"/>
+			<h:commandButton class="botao botaoh" value="Salvar" action="#{categoriaBean.salvar()}"/>
+			<h:commandButton class="botao botaoh" value="Editar" action="#{categoriaBean.novo()}"/>
 		</div>
 		
 	</div>
-	
+	</h:form>
 </h:body>
 </html>

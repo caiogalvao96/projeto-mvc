@@ -1,12 +1,14 @@
 package br.com.projeto.controllers;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
 
 import br.com.projeto.dao.DaoGenerico;
 import br.com.projeto.model.PessoaTeste;
@@ -86,7 +88,30 @@ public class PessoaController implements Serializable {
 		return "";
 	}
 	
+	@PostConstruct
+	public void listar() {
+		
+		listaVeiculos = daoGenericoV.getListEntity(Veiculo.class);
 	
-	
+	}
 
+	public String editar() {
+		
+		
+		
+		return "";
+	}
+	
+	public String deletar() {
+		
+		daoGenericoV.deletarPorId(veiculo);
+		this.novo();
+		this.listar();
+		
+		return "";
+	}
+	
+	
+	
+	
 }
